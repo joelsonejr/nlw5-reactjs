@@ -1,14 +1,17 @@
-export default function Button(props) {
-  let counter = 1;
+import { useState } from "react";
 
-  function increment(counter){
-    counter = counter +1;
+export default function Button(props) {
+  const [counter, setCounter] = useState(1);
+
+  function increment() {
+    setCounter(counter + 1);
+    console.log(useState);
   }
-  return(
+  return (
     <>
-    <span>1</span>
-    <button onClick={increment}>{props.children}</button>
-    <br />
+      <span>{counter}</span>
+      <button onClick={increment}>{props.children}</button>
+      <br />
     </>
-    )
+  );
 }
