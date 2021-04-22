@@ -1,1 +1,3 @@
 código da aula 01: missaoespacial
+código da aula 02: embuscadoproximonivel
+código da aula 03: astronautas
