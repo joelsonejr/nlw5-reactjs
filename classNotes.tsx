@@ -300,4 +300,60 @@ export async function getStaticProps() {
     para simular que ela está rodando em produção, utilizando o 'yarn build'. 
     Após a build estar pronta, utiliza-se o 'yarn start'. Ele faz com o que o 
     projeto rode da mesma forma que se ele estivesse em produção.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+::
+::::::::::::::::::::::::::::::: AULA 03 ::::::::::::::::::::::::::::::::::::::: 
+
+:: TypeScript
+  Todas as funções possuem uma tipagem, que pode ser importada de dentro do Next.
+Quando se importa uma tipagem de uma função, está sendo determinado o formato dela,
+e do retorno dela. 
+*/
+
+import { GetStaticProps } from 'next';
+
+/*
+
+Para tipar uma função como um todo (seus parâmetros e seu retorno) ela deve ser 
+transformada em uma constante. E a tipagem vem logo após o nome da função, 
+precedida por ':'
+
+A função muda de:
+*/
+export async function getStaticProps() {};
+/*
+Para: 
+*/
+export const getStaticProps: GetStaticProps = async () => {};
+/*
+
+::'generic' - no TS se refere a uma função. Um tipo que pode receber um parâmetro.
+
+::Tipagem do argumento do componente Home
+*/
+export default function Home(props: HomeProps) {}
+/*
+
+::Axios - biblioteca para fazer requisições HTTP (tal qual o fetch), mas que trás
+algumas funcionalidades. Com ela fica mais simples de se definir como os dados 
+serão pegos no servidor, e quais 'filtros' serão utilizados nessa requisição.
+
+::Formatação de dados - quando se trabalha com Front end é muito comum ter de 
+apresentar dados que vem em um formato diferete daquele no qual ele vem do 
+backend.
+
+Não é interessante formatar o dado no momento de exibi-lo, um vez que todas as 
+vezes que aquele componente for renderizado, essa formatação será executada. 
+Quanto mais isso ocorrer, maior será o impacto na performace.
+
+Por isso, sempre que for necessária realziar a formatação de algum conteúdo que 
+está vindo do Back end, deve-se formatá-lo ANTES de ele chegar ao componente. 
+
+A dica é formatar os dados, logo depois da chamada a API, para retornar para o 
+componente os dados já formatados.
+
+
+
 */

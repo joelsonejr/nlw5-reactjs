@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "axios": "^0.21.1",
     "date-fns": "^2.21.1",
     "json-server": "^0.16.3",
     "next": "10.1.3",
