@@ -1,3 +1,24 @@
-código da aula 01: missaoespacial
-código da aula 02: embuscadoproximonivel
-código da aula 03: astronautas
+Desafios realizados
+    código da aula 01: missaoespacial
+    código da aula 02: embuscadoproximonivel
+    código da aula 03: astronautas
+        
+        Durante os meus estudo a respeito de ReactJS com NextJs, durante a NLW5 da @Rocketseat, pude aprender a respeito do componente "Image" do NextJs.
+        
+        Esse componente é extremamente útil, uma vez que ele possibilita que o Next realize otimização automática de uma imagem, no que diz respeito ao 
+        tamanho do arquivo, e as dimensões do mesmo (largura e altura).
+        
+        A utilização desse componente " ... evita o envio de grandes imagens para
+        dispositivos que possuam uma pequena janela de exibição" (documentação do NextJs, tradução livre).
+        
+        Esse recurso também é útil em cenários nos quais uma imagem muito "pesada"
+        é enviada à aplicação por parte do usuário. Uma vez que Next pode ajustala 
+        para um tamanho pré-definido. Reduzindo o impacto no tempo de carregamento
+        das páginas. 
+        
+        
+        
+Desafios Pendentes: 
+
+
+
