@@ -2,6 +2,11 @@
 
 ## ::::::::::::::::::::::::::::::: AULA 01 :::::::::::::::::::::::::::::::::::::::
 
+    client (browser) - next.js (node.js) - server (back-end) 
+
+No next, a geração da páginas pode ser feita tanto no client, quanto na camada do
+Next.js.
+
 Componente - uma função que retorna HTML. Eles facilitam tanto na manutenção do
 código, quanto na reutilização do mesmo. Tudo dentro do react é um componente.
 
@@ -492,8 +497,75 @@ dangerouslySetInnerHTML={{__html: episode.description }}
 />
 
 /*
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::: AULA 04 :::::::::::::::::::::::::::::::::::::
 
+::: getStaticProps() : é utilizado de forma obrigatória em toda rota que está 
+utilizando geração estática, e que possui parâmetros dinâmicos ( que tem o [] no
+nome do arquivo).
+
+O principal momento no qual o Next vai gerar a página estática da aplicação é no
+momento da build.
+
+Sendo assim, uma vez que o next não sabe o con
+
+Observando o [slug].tsx : 
+
+Uma vez que o Next roda o processo de gerar as páginas estáticas no momento da 
+build do projeto (yarn build), como que ele vai construir uma versão estática 
+dá página de episódios, uma vez que no momento da build ele não sabe qual 
+episódio existe, qual episódio eu quero gerar uma versão estática? 
+
+O episódio (o slug do episódio) é uma opção dinâmica. No momento da build, o Next
+não possui a informação de quais episódios temos dentro de nossa página, de nossa
+API. Ele não sabe quais episódios ele precisa gerar de forma estática.
+
+Também  pode-se ver que o 'paths: []' está vazio. Logo, não será
+gerada nenhuma página (referente aos episódios) de forma estática.
+
+Por isso, toda vez que se está gerando de forma dinâmica uma página estática, ou 
+seja, uma página estática que tem parâmetros, é preciso informar o método 
+'getStaticPaths()', pois ele retorna (no caso em questão) quais episódios eu 
+quero gerar de forma estática no momento da build.
+
+Uma vez que o 'paths: []' está vazio, o Next entende que ele não vai gerar de 
+forma estática nenhum episódio no momento da build. 
+
+: fallback: determina o comportamente da página de um episódio, que não foi 
+gerado estaticamente.
+
+: fallback: false : caso seja acessada a página estática de um epísódio, e esse
+episódio não foi gerado no momento da build, ele vai retornar 404.
+*/
+    client (browser) - next.js (node.js) - server (back-end) 
+/*
+
+: fallback: true : caso seja acessado um epísódio, e o mesmo não tenha sido
+gerado anteriormente de forma estática, ele tentar vai buscar os dados daquele 
+espisódio que está sendo acessado, para gerar uma página estática e salvar em 
+disco. O 'fallback:true' faz com que a requisição para buscar os dados do 
+episódio ( a requisição que está dentro do getStaticProps(), a chamada à API) 
+aconteça pelo lado do client, ou seja, pelo lado do browser.  
+
+Como a requisição ocorre pelo lado do client, os dados que devem preencher 
+'episode', vão demorar um pouco para serem gerados. 
+
+O Next só vai carregar os dados das páginas quando elas forem acessadas pelo 
+usuário.
+
+: fallback: blocking : ele roda a requisição na camada do next.js. Logo, quando
+o usuário clicar em um link, ele só será redirecionado para a próxima tela, 
+quando os dados já tiverem sido carregados. Para questões de SEO e indexação, 
+essa é a melhor opção. Caso um crawler tente acessar o conteúdo da aplicação
+que ainda não foi gerado estaticamente, a página vai aguardar o conteúdo ser
+carregado, para então ser exibido. 
+
+Dentro do Next o fallback (true ou blocking) são chamados de incremental static
+regeneration. Ele permite gerar novas páginas conforme as pessoas vão acessando, 
+e também revalidar (gerar novamente) páginas que estejam obsoletas.
+
+::Context API  23:41
 
 
 */
